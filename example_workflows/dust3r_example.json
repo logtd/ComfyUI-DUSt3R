@@ -1,0 +1,379 @@
+{
+  "last_node_id": 74,
+  "last_link_id": 142,
+  "nodes": [
+    {
+      "id": 54,
+      "type": "RunDust3r",
+      "pos": {
+        "0": 2321,
+        "1": 1573
+      },
+      "size": {
+        "0": 210,
+        "1": 174
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "dust3r",
+          "type": "DUST3R",
+          "link": 104
+        },
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 131
+        }
+      ],
+      "outputs": [
+        {
+          "name": "DUST3R_SCENE",
+          "type": "DUST3R_SCENE",
+          "links": [
+            137
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RunDust3r"
+      },
+      "widgets_values": [
+        false,
+        1,
+        301,
+        0.01,
+        "linear"
+      ]
+    },
+    {
+      "id": 53,
+      "type": "LoadDust3r",
+      "pos": {
+        "0": 1732,
+        "1": 1570
+      },
+      "size": {
+        "0": 236.03285217285156,
+        "1": 58
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "DUST3R",
+          "type": "DUST3R",
+          "links": [
+            104
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadDust3r"
+      },
+      "widgets_values": [
+        "DUSt3R_ViTLarge_BaseDecoder_512_dpt.pth"
+      ]
+    },
+    {
+      "id": 67,
+      "type": "ImageBatch",
+      "pos": {
+        "0": 2040,
+        "1": 1685
+      },
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 129
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 130
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            131
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageBatch"
+      }
+    },
+    {
+      "id": 56,
+      "type": "LoadImage",
+      "pos": {
+        "0": 1656,
+        "1": 1710
+      },
+      "size": {
+        "0": 315,
+        "1": 314
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            129,
+            130
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_temp_msrpq_00049_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 71,
+      "type": "RenderDust3rSimple",
+      "pos": {
+        "0": 2592,
+        "1": 1569
+      },
+      "size": [
+        210.55426025390625,
+        270
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "scene",
+          "type": "DUST3R_SCENE",
+          "link": 137
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            138
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RenderDust3rSimple"
+      },
+      "widgets_values": [
+        1,
+        1,
+        5,
+        10,
+        30,
+        0.2,
+        16,
+        1024,
+        576
+      ]
+    },
+    {
+      "id": 63,
+      "type": "VHS_VideoCombine",
+      "pos": {
+        "0": 2894,
+        "1": 1574
+      },
+      "size": [
+        549.5039672851562,
+        621.8459815979004
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 138
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 8,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_00250.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 8
+          },
+          "muted": false
+        }
+      }
+    },
+    {
+      "id": 72,
+      "type": "Note",
+      "pos": {
+        "0": 2573,
+        "1": 1340
+      },
+      "size": {
+        "0": 282.5343933105469,
+        "1": 166.19833374023438
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "d_theta: y-axis rotation\nd_phi: x-axis rotation\nd_r: in/out zoom\n\nWhen given a list of values it will interpolate through the list\n\nCan be given a list or a single value."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      104,
+      53,
+      0,
+      54,
+      0,
+      "DUST3R"
+    ],
+    [
+      129,
+      56,
+      0,
+      67,
+      0,
+      "IMAGE"
+    ],
+    [
+      130,
+      56,
+      0,
+      67,
+      1,
+      "IMAGE"
+    ],
+    [
+      131,
+      67,
+      0,
+      54,
+      1,
+      "IMAGE"
+    ],
+    [
+      137,
+      54,
+      0,
+      71,
+      0,
+      "DUST3R_SCENE"
+    ],
+    [
+      138,
+      71,
+      0,
+      63,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6934334949441405,
+      "offset": [
+        -1610.076918014282,
+        -1359.6337774711683
+      ]
+    }
+  },
+  "version": 0.4
+}
