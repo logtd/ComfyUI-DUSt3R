@@ -1,6 +1,8 @@
 # ComfyUI-DUSt3R
 ComfyUI nodes to use [DUSt3R](https://dust3r.europe.naverlabs.com/)
 
+DUSt3R allows you to take reference images and create a 3D point cloud scene.
+
 ## Installation
 
 ### Pytorch3d
